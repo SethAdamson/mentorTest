@@ -1,26 +1,37 @@
 Answer each question in a written format
 
 1. What does semantic HTML mean?
+    Semantic HTML is the use of unique tags within HTML that further define the content of the tag. While the standard <div> and <span> don't give you information about the content, they can be replaced by more descriptive <form>, <table>, <article> etc. This allows for preset CSS and sharing of data across multiple users much easier than non-semantic tags. Some potential draw-backs would be future HTML updates that would require new semantic tags to be up-to-date.
 
 2. What is the box model?
+    All HTML elements are considered boxes. These boxes are made up of the margins, borders, padding, and content. This allows for the styling and control of HTML elements through CSS.
 
 3. What is the difference between IDs and Classes?
+    HTML IDs and Classes are identifiers for HTML elements for CSS styling. IDs are unique and specific to a single element, while classes can be shared across multiple different elements. This allows for increased customization within CSS without the need for further unique HTML tags.
 
 4. What is z-index (CSS property) useful for?
+    The z-index is a CSS property that determines the order in which HTML elements will display on top of each other. This is particularily useful and needed when overlapping element to be rendered. 
 
 5. Summarize what the keyword 'this' is used for?
+    The 'this' keyword is used to determine the scope/owner of the variable in question. The default binding is to the global scope, but is often used in conjuction with classes and objects to bind initial values, functions, or variables to be used and called later in reference to the 'owner'. This is used heavily within React as the component based structure needs to reference the original component for functionality and variables, wherever it may be rendered.
 
 6. What is a callback? What are common uses for callbacks in JavaScript?
+    A callback is a term used when a function is to be used or called within another function. This is important to control the order in which functions are invoked and also how data is used. A common built in function for JavaScript highlighting callbacks is the setTimeout, which controls the amount of time before a fucntion will run. Other commons uses are within asynchronus functions, where data may take time to return and you need to wait for that data before calling the next function. 
 
 7. What is a closure and why is it useful?
+    A closure is the ability to have 'private' variables that can be contiuously accessed and changed, but is not available on the global scope. A common use is a function that defines a variable and also returns a function that manipulates that variable. This allows for the variable changes to be tracked and maintained over time, but can only be adjusted within the function, and maintains the integrity of the variable or 'closes' the variable. Because of this, closures are extremely helpful within team environments.
 
 8. How does a prototype work?
+    A prototype is a propety or method that is inheritly available to JavaScript objects of the same type. The common ones are Data, Array, Objects, or create constructor objects. This allows for functionality and properties to share the properties instead of creating unique properties on every instance of the data type. Meaning, a single property/method is stored in memory, but data types that match the prototype can all access it at anytime. 
 
 9. Describe what a component-based framework/library is?
+    A component based framework is the use of smaller, reusable sections of code that are combined to create a larger 'parent' view. Component based structure is very popular because it allows code to become self-contained and maintained. This is helpful for a multitude of reasons, but allows for rendering to be component based, and not a full refresh of the entire view. Because of the reusability of the components, you can create robust and performant Single Page Applications. 
 
 10. What is the component lifecycle in React?
+    The component lifecycle in React can be broken down into three sections: mounting, updating, and unmounting. There are multiple lifecycle stages that can be accessed within React, but each fall within these areas. Within 'mounting', the component is being created and rendered for viewing. 'Updating' is the lifecycle stage where changes to props or state can trigger a rerender of the appropriate data. Lastly, 'unmounting' is called when a component is no longer being rendered to the DOM. The methods that are attached to the lifecycle stages allow control over these events and timing of the component render. 
 
 11. What is REST? (not just a description of the acronym)
+    REST is the web standard and HTTP protocol for data transfer. This is important in creating CRUD(Create, Read, Update, Delete) functionality between your front-end site and back-end server. Having a universal standard for data transfer allow for all types of computer systems to properly communicate with each other. Because of this standard, it also allows for the seperation of client and server, which increases security and functionality, because they can be coded independent of each other. 
 
 12. Name three common ways of getting data from a request (in Express.JS):
 
@@ -37,9 +48,20 @@ email varchar(255)
 13. Given the Schema above, write the following four basic CRUD db queries using postgres syntax
 
 -Get all users:
+    SELECT * FROM users;
 
 -Create a new user with the name of 'your name' and an email of 'fake@fake.com':
+    INSERT INTO users (name, email)
+    VALUES('your name', 'fake@fake.com');
+
+    //The serial type autopopulates the id, but should be followed by primary key in schema to avoid potential duplicates. 
+        Without knowing if other users are already in table, I will not be using id to reference the user, but generally would in most cases.//
 
 -Update the newly created user's name to 'Bobby Boy':
+    UPDATE users
+    SET name = 'Bobby Boy'
+    WHERE email = 'fake@fake.com';
 
 -Delete the newly updated user:
+    DELETE FROM users
+    WHERE name = 'Bobby Boy';
